@@ -5,7 +5,7 @@ const screenTitle = "User Intents";
 const screenHeader = "What is your main purpose for using SafetyCulture?";
 const screenSubHeader = "We’ll use this to help get you started.";
 const toolTipText = "Click here to display user intents.";
-const toolTipButtonText = "Select User Intents";
+const toolTipButtonText = "Select Signup Intent";
 
 const userIntents = [
   TextSpan(
@@ -25,27 +25,22 @@ const userIntents = [
           style: TextStyle(fontWeight: FontWeight.bold)),
       TextSpan(text: " on"),
       TextSpan(
-          text: " equipment",
-          style: TextStyle(fontWeight: FontWeight.bold)),
+          text: " equipment", style: TextStyle(fontWeight: FontWeight.bold)),
     ],
   ),
   TextSpan(
     text: "Conduct", // default text style
     children: <TextSpan>[
-      TextSpan(
-          text: " audits",
-          style: TextStyle(fontWeight: FontWeight.bold)),
+      TextSpan(text: " audits", style: TextStyle(fontWeight: FontWeight.bold)),
       TextSpan(text: " and stay"),
       TextSpan(
-          text: " compliant",
-          style: TextStyle(fontWeight: FontWeight.bold)),
+          text: " compliant", style: TextStyle(fontWeight: FontWeight.bold)),
     ],
   ),
   TextSpan(
     children: <TextSpan>[
       TextSpan(
-          text: "Log issues",
-          style: TextStyle(fontWeight: FontWeight.bold)),
+          text: "Log issues", style: TextStyle(fontWeight: FontWeight.bold)),
       TextSpan(text: " and"),
       TextSpan(
           text: " manage incidents",
@@ -57,12 +52,9 @@ const userIntents = [
     text: "Provide", // default text style
     children: <TextSpan>[
       TextSpan(
-          text: " training",
-          style: TextStyle(fontWeight: FontWeight.bold)),
+          text: " training", style: TextStyle(fontWeight: FontWeight.bold)),
       TextSpan(text: " and"),
-      TextSpan(
-          text: " courses",
-          style: TextStyle(fontWeight: FontWeight.bold)),
+      TextSpan(text: " courses", style: TextStyle(fontWeight: FontWeight.bold)),
       TextSpan(text: " to my team"),
     ],
   ),
@@ -86,6 +78,7 @@ const userIntentIcons = [
 const margin16 = EdgeInsets.all(16.0);
 const marginHeader = EdgeInsets.all(20);
 const marginSubHeader = EdgeInsets.only(left: 20, bottom: 8);
+const marginFooter = EdgeInsets.only(bottom: 16.0);
 const screenBackgroundColor = Color(0xFFE9EEF6);
 const screenHeaderStyle = TextStyle(fontSize: 28, fontWeight: FontWeight.w700);
 const screenSubHeaderStyle =
@@ -115,3 +108,19 @@ const cardContentPadding = EdgeInsets.only(left: 0, right: 8);
 const cardDefaultBorder = BorderSide(color: Colors.transparent, width: 0.0);
 const cardSelectedBorder = BorderSide(color: cardSplashColor, width: 1.0);
 const leftArrow = Icon(Icons.arrow_forward_ios, size: 14);
+
+/* Amplitude */
+const AMPLITUDE_API_KEY = "207f113d3cc32746120fb6a682bc6ee6";
+const SIGNUP_SCREEN = "signup_screen";
+const INTENT_LIST_SCREEN = "intent_list_screen";
+const SIGNUP_INTENT = "signup_intent";
+const CLICKED_SIGNUP_INTENT_BUTTON = "clicked_signup_intent_button";
+const CLICKED_CONTINUE_BUTTON = "clicked_continue_button";
+const signupIntents = [
+  "inspections",
+  "maintenance",
+  "audits",
+  "issues",
+  "training",
+  "other"
+];

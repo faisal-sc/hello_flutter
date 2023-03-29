@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'tooltip_button.dart';
 import 'user_intent_screen.dart';
+import 'amplitude_util.dart';
 import 'constants.dart';
 
 void main() {
@@ -13,6 +14,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    AmplitudeUtil.init();
+
     return MaterialApp(
       title: actionBarTitle,
       theme: ThemeData(
@@ -34,7 +37,6 @@ class SCHomePage extends StatefulWidget {
 }
 
 class _SCHomePageState extends State<SCHomePage> {
-
   final GlobalKey<TooltipState> tooltipKey = GlobalKey<TooltipState>();
 
   @override
@@ -56,8 +58,10 @@ class _SCHomePageState extends State<SCHomePage> {
               backgroundColor: toolTipColor,
               showBelow: false,
               onButtonClick: () => {
-                // Action on Button click
-                debugPrint("Show user intent in new screen:"),
+                // Track event on Amplitude
+                AmplitudeUtil.trackEvent(
+                    CLICKED_SIGNUP_INTENT_BUTTON, SIGNUP_SCREEN),
+                // Navigate to next screen
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -67,12 +71,6 @@ class _SCHomePageState extends State<SCHomePage> {
           ],
         ),
       ),
-      /*floatingActionButton: FloatingActionButton(
-        onPressed: () => {
-          *//* Add action *//*
-        },
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.*/
     );
   }
 }

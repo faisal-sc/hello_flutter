@@ -1,7 +1,6 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/intent_list_item.dart';
+import 'amplitude_util.dart';
 import 'constants.dart';
 
 class UserIntentScreen extends StatefulWidget {
@@ -12,13 +11,11 @@ class UserIntentScreen extends StatefulWidget {
 }
 
 class _UserIntentScreen extends State<UserIntentScreen> {
-
   int currentSelection = -1;
 
   // Callback for selected item
   void handleSelection(int selectedIndex) {
-    debugPrint("handleSelection = $selectedIndex");
-    if (selectedIndex == currentSelection){
+    if (selectedIndex == currentSelection) {
       setState(() {
         currentSelection = -1;
       });
@@ -68,8 +65,17 @@ class _UserIntentScreen extends State<UserIntentScreen> {
             )),
             Container(
                 padding: margin16,
+                margin: marginFooter,
                 child: ElevatedButton(
-                    onPressed: () => {},
+                    onPressed: () => {
+                          AmplitudeUtil.trackEvent(
+                              CLICKED_CONTINUE_BUTTON, INTENT_LIST_SCREEN),
+                          if (currentSelection >= 0)
+                            {
+                              AmplitudeUtil.setUserProperty(SIGNUP_INTENT,
+                                  signupIntents[currentSelection])
+                            }
+                        },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: buttonColor,
                       fixedSize: buttonSize,

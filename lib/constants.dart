@@ -8,13 +8,70 @@ const toolTipText = "Click here to display user intents.";
 const toolTipButtonText = "Select User Intents";
 
 const userIntents = [
-  "Run safety inspections with my team",
-  "Run maintenance checks on equipment",
-  "Conduct audits & stay compliant",
-  "Log issues & manage incidents in the workplace",
-  "Provide training and courses to my team",
-  "Other"
+  TextSpan(
+    text: "Run", // default text style
+    children: <TextSpan>[
+      TextSpan(
+          text: " safety inspections",
+          style: TextStyle(fontWeight: FontWeight.bold)),
+      TextSpan(text: " with my team"),
+    ],
+  ),
+  TextSpan(
+    text: "Run", // default text style
+    children: <TextSpan>[
+      TextSpan(
+          text: " maintenance checks",
+          style: TextStyle(fontWeight: FontWeight.bold)),
+      TextSpan(text: " on"),
+      TextSpan(
+          text: " equipment",
+          style: TextStyle(fontWeight: FontWeight.bold)),
+    ],
+  ),
+  TextSpan(
+    text: "Conduct", // default text style
+    children: <TextSpan>[
+      TextSpan(
+          text: " audits",
+          style: TextStyle(fontWeight: FontWeight.bold)),
+      TextSpan(text: " and stay"),
+      TextSpan(
+          text: " compliant",
+          style: TextStyle(fontWeight: FontWeight.bold)),
+    ],
+  ),
+  TextSpan(
+    children: <TextSpan>[
+      TextSpan(
+          text: "Log issues",
+          style: TextStyle(fontWeight: FontWeight.bold)),
+      TextSpan(text: " and"),
+      TextSpan(
+          text: " manage incidents",
+          style: TextStyle(fontWeight: FontWeight.bold)),
+      TextSpan(text: " in the workplace"),
+    ],
+  ),
+  TextSpan(
+    text: "Provide", // default text style
+    children: <TextSpan>[
+      TextSpan(
+          text: " training",
+          style: TextStyle(fontWeight: FontWeight.bold)),
+      TextSpan(text: " and"),
+      TextSpan(
+          text: " courses",
+          style: TextStyle(fontWeight: FontWeight.bold)),
+      TextSpan(text: " to my team"),
+    ],
+  ),
+  TextSpan(
+    text: "Other", // default text style
+  ),
 ];
+
+const selectedIcon = "assets/ic_selected.svg.vec";
 
 const userIntentIcons = [
   "assets/ic_inspections.svg.vec",
@@ -32,7 +89,7 @@ const marginSubHeader = EdgeInsets.only(left: 20, bottom: 8);
 const screenBackgroundColor = Color(0xFFE9EEF6);
 const screenHeaderStyle = TextStyle(fontSize: 28, fontWeight: FontWeight.w700);
 const screenSubHeaderStyle =
-TextStyle(fontSize: 14, fontWeight: FontWeight.w400);
+    TextStyle(fontSize: 14, fontWeight: FontWeight.w400);
 
 /* ToolTip */
 const toolTipColor = Color(0xFF1F2533);
@@ -48,8 +105,13 @@ const buttonSize = Size(0, 40);
 const buttonColor = Color(0xFF675DF4);
 
 /* Card */
+const cardHeight = 64.0;
+const cardElevation = 0.0;
 const cardBorderRadius = 12.0;
-const cardSplashColor = Colors.blue;
+const cardSplashColor = Color(0xFF675DF4);
+const cardSplashAlpha = 30;
 const cardOffset = Offset(-4, 0);
 const cardContentPadding = EdgeInsets.only(left: 0, right: 8);
+const cardDefaultBorder = BorderSide(color: Colors.transparent, width: 0.0);
+const cardSelectedBorder = BorderSide(color: cardSplashColor, width: 1.0);
 const leftArrow = Icon(Icons.arrow_forward_ios, size: 14);

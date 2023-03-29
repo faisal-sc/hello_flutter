@@ -1,9 +1,33 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/intent_list_item.dart';
 import 'constants.dart';
 
-class UserIntentScreen extends StatelessWidget {
+class UserIntentScreen extends StatefulWidget {
   const UserIntentScreen({super.key});
+
+  @override
+  State<UserIntentScreen> createState() => _UserIntentScreen();
+}
+
+class _UserIntentScreen extends State<UserIntentScreen> {
+
+  int currentSelection = -1;
+
+  // Callback for selected item
+  void handleSelection(int selectedIndex) {
+    debugPrint("handleSelection = $selectedIndex");
+    if (selectedIndex == currentSelection){
+      setState(() {
+        currentSelection = -1;
+      });
+    } else {
+      setState(() {
+        currentSelection = selectedIndex;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +61,8 @@ class UserIntentScreen extends StatelessWidget {
                 return IntentListItem(
                   text: userIntents[index],
                   icon: userIntentIcons[index],
+                  isSelected: currentSelection == index,
+                  onClick: () => {handleSelection(index)},
                 );
               },
             )),

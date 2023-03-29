@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+
+class TooltipButton extends StatefulWidget {
+  final GlobalKey<TooltipState> tooltipKey;
+  final String tooltipText;
+  final String buttonText;
+  final Color textColor;
+  final Color backgroundColor;
+  final bool showBelow;
+  final Function onButtonClick;
+
+  const TooltipButton(
+      {Key? key,
+      required this.tooltipKey,
+      required this.tooltipText,
+      required this.buttonText,
+      required this.textColor,
+      required this.backgroundColor,
+      required this.showBelow,
+      required this.onButtonClick})
+      : super(key: key);
+
+  @override
+  State<TooltipButton> createState() => _TooltipButton();
+}
+
+class _TooltipButton extends State<TooltipButton> {
+  @override
+  void initState() {
+    super.initState();
+    // Display Tooltip on component load
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      widget.tooltipKey.currentState?.ensureTooltipVisible();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+        key: widget.tooltipKey,
+        preferBelow: widget.showBelow,
+        triggerMode: TooltipTriggerMode.manual,
+        decoration:
+            BoxDecoration(color: widget.backgroundColor.withOpacity(0.7)),
+        richMessage: TextSpan(
+          text: widget.tooltipText,
+          style: TextStyle(color: widget.textColor),
+          children: [
+            const WidgetSpan(
+              child: Padding(
+                padding: EdgeInsets.only(left: 8),
+              ),
+            ),
+            WidgetSpan(
+              child: Icon(Icons.close, size: 16, color: widget.textColor),
+            )
+          ],
+        ),
+        child: ElevatedButton(
+          onPressed: () => {widget.onButtonClick.call()},
+          child: Text(widget.buttonText),
+        ));
+  }
+}

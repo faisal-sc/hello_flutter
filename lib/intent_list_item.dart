@@ -31,7 +31,8 @@ class IntentListItem extends StatelessWidget {
             child: ListTile(
               title: Text(text),
               leading: SvgPicture(AssetBytesLoader(icon)),
-              trailing: (text == userIntents.last) ? leftArrow : null,
+              trailing: null,
+              // trailing: (text == userIntents.last) ? leftArrow : null,
               contentPadding: cardContentPadding,
             ),
           )),

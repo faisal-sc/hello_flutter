@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'constants.dart';
 
 class TooltipButton extends StatefulWidget {
   final GlobalKey<TooltipState> tooltipKey;
@@ -40,19 +41,20 @@ class _TooltipButton extends State<TooltipButton> {
         key: widget.tooltipKey,
         preferBelow: widget.showBelow,
         triggerMode: TooltipTriggerMode.manual,
-        decoration:
-            BoxDecoration(color: widget.backgroundColor.withOpacity(0.7)),
+        decoration: BoxDecoration(
+            color: widget.backgroundColor.withOpacity(toolTipOpacity),
+            borderRadius: BorderRadius.circular(toolTipCornerRadius)),
         richMessage: TextSpan(
           text: widget.tooltipText,
           style: TextStyle(color: widget.textColor),
           children: [
             const WidgetSpan(
               child: Padding(
-                padding: EdgeInsets.only(left: 8),
+                padding: EdgeInsets.only(left: toolTipPadding),
               ),
             ),
             WidgetSpan(
-              child: Icon(Icons.close, size: 16, color: widget.textColor),
+              child: Icon(Icons.close, size: toolTipIconSize, color: widget.textColor),
             )
           ],
         ),

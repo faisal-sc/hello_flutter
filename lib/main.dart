@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'tooltip_button.dart';
 import 'user_intent_screen.dart';
 import 'constants.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,11 +50,11 @@ class _SCHomePageState extends State<SCHomePage> {
           children: <Widget>[
             TooltipButton(
               tooltipKey: tooltipKey,
-              tooltipText: "Click here to capture User Intents",
-              buttonText: "User Intents Screen",
-              textColor: Colors.white,
-              backgroundColor: Colors.blue,
-              showBelow: true,
+              tooltipText: toolTipText,
+              buttonText: toolTipButtonText,
+              textColor: toolTipTextColor,
+              backgroundColor: toolTipColor,
+              showBelow: false,
               onButtonClick: () => {
                 // Action on Button click
                 debugPrint("Show user intent in new screen:"),

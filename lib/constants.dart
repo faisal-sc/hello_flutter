@@ -63,6 +63,7 @@ const userIntents = [
   ),
 ];
 
+const scLogo = "assets/ic_logo.svg.vec";
 const selectedIcon = "assets/ic_selected.svg.vec";
 
 const userIntentIcons = [
@@ -83,6 +84,11 @@ const screenBackgroundColor = Color(0xFFE9EEF6);
 const screenHeaderStyle = TextStyle(fontSize: 28, fontWeight: FontWeight.w700);
 const screenSubHeaderStyle =
     TextStyle(fontSize: 14, fontWeight: FontWeight.w400);
+
+/* AppBar */
+const appBarBackgroundColor = Colors.white;
+const appBarIconColor = IconThemeData(color: Colors.black54);
+const appBarLogoWidth = 138.0;
 
 /* ToolTip */
 const toolTipColor = Color(0xFF1F2533);
@@ -108,6 +114,10 @@ const cardContentPadding = EdgeInsets.only(left: 0, right: 8);
 const cardDefaultBorder = BorderSide(color: Colors.transparent, width: 0.0);
 const cardSelectedBorder = BorderSide(color: cardSplashColor, width: 1.0);
 const leftArrow = Icon(Icons.arrow_forward_ios, size: 14);
+
+/* SnackBar */
+const snackBarContent = Text("Thanks for registering your signup intent!");
+const snackActionOk = "OK";
 
 /* Amplitude */
 const AMPLITUDE_API_KEY = "207f113d3cc32746120fb6a682bc6ee6";

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/intent_list_item.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 import 'amplitude_util.dart';
 import 'constants.dart';
 
@@ -26,11 +28,32 @@ class _UserIntentScreen extends State<UserIntentScreen> {
     }
   }
 
+  // Confirms selection & navigates back
+  void confirmSelection() {
+    // Show SnackBar
+    final snackBar = SnackBar(
+      content: snackBarContent,
+      action: SnackBarAction(
+        label: snackActionOk,
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text(screenTitle),
+          backgroundColor: appBarBackgroundColor,
+          iconTheme: appBarIconColor,
+          title: const SizedBox(
+            width: appBarLogoWidth,
+            child: SvgPicture(AssetBytesLoader(scLogo)),
+          ),
+          centerTitle: true,
         ),
         backgroundColor: screenBackgroundColor,
         body: Column(
@@ -68,13 +91,16 @@ class _UserIntentScreen extends State<UserIntentScreen> {
                 margin: marginFooter,
                 child: ElevatedButton(
                     onPressed: () => {
+                          // Track events
                           AmplitudeUtil.trackEvent(
                               CLICKED_CONTINUE_BUTTON, INTENT_LIST_SCREEN),
                           if (currentSelection >= 0)
                             {
                               AmplitudeUtil.setUserProperty(SIGNUP_INTENT,
                                   signupIntents[currentSelection])
-                            }
+                            },
+                          // Show confirmation
+                          confirmSelection()
                         },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: buttonColor,
